@@ -1,43 +1,40 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - приложение ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title</title>
+    <link href="~/Styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Информация", "About", "Home")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
-                </ul>
-            </div>
+<body style="font-family: system-ui; font-size: medium; background-color: #53afed; ">
+
+    <div id="menu" class="row" style="padding: 20px; width: 90%; margin: auto; ">
+        <div class="col-sm-3" style="text-align: center;">
+            @*<button class="btn-1" style="color:white;">@Html.ActionLink("Main", "Index", "Home")</button>*@
+            <input class="btn-1" type="button" name="Home" runat="server" value="Home" onclick="router('Index')" />
+        </div>
+        <div class="col-sm-3" style="text-align: center;">
+            @*<button class="btn-1" style="color:white">@Html.ActionLink("Get distances", "GetHtml", "Home")</button>*@
+            <input class="btn-1" type="button" name="GetHtml" runat="server" value="GetHtml" onclick="router('GetHtml')" />
+        </div>
+        <div class="col-sm-3" style="text-align: center;">
+            @*<button class="btn-1" style="color:white">@Html.ActionLink("Get all cities", "GetCities", "Home")</button>*@
+            <input class="btn-1" type="button" name="GetCities" runat="server" value="GetCities" onclick="router('GetCities')" />
         </div>
     </div>
-    <div class="container body-content">
+
+    <div style="background-color: white; padding: 20px; width: 90%; margin: auto; border-radius: 10px;">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
-</html>
+        </html>
+
+<script>
+    function router(route) {
+        window.location.href = "/Home/" + route;
+    }
+</script>

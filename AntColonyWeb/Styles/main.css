@@ -1,0 +1,16 @@
+﻿
+.btn-1 {
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #53afed;
+    border: 2px white solid;
+    transition: 0.2s;
+    color: white;
+}
+
+.active, .btn-1:hover {
+    background-color: white;
+    border: 2px white solid;
+    color: #53afed;
+}
