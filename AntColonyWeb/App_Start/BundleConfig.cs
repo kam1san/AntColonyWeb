@@ -22,9 +22,13 @@ namespace AntColonyWeb
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-select").Include(
+                      "~/Scripts/bootstrap-select.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Styles/main.css"));
+                      "~/Styles/main.css",
+                      "~/Content/bootstrap-select.css"));
         }
     }
 }

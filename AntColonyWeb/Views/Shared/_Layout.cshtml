@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <link href="~/Styles/main.css" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap-select.min.css")">
+    <script src="~/Scripts/bootstrap-select.min.js"></script>
 </head>
 <body style="font-family: system-ui; font-size: medium; background-color: #53afed; ">
 
     <div id="menu" class="row" style="padding: 20px; width: 90%; margin: auto; ">
         <div class="col-sm-3" style="text-align: center;">
             @*<button class="btn-1" style="color:white;">@Html.ActionLink("Main", "Index", "Home")</button>*@
-            <input class="btn-1" type="button" name="Home" runat="server" value="Home" onclick="router('Index')" />
+            <input class="btn-1" type="button" name="CitiesChoice" runat="server" value="CitiesChoice" onclick="router('CitiesChoice')" />
         </div>
         <div class="col-sm-3" style="text-align: center;">
             @*<button class="btn-1" style="color:white">@Html.ActionLink("Get distances", "GetHtml", "Home")</button>*@
@@ -26,10 +31,6 @@
     <div style="background-color: white; padding: 20px; width: 90%; margin: auto; border-radius: 10px;">
         @RenderBody()
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
         </html>
 

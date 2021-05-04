@@ -14,11 +14,23 @@ namespace AntColonyWeb.Controllers
     public class HomeController : Controller
     {
         CitiesContext cities_db = new CitiesContext();
-        public ActionResult Index()
+        int[] selected_cities;
+        public ActionResult CitiesChoice()
         {
-            AntColonyAlgorithmSetup setup = new AntColonyAlgorithmSetup("test1", 3, 2, 0.01, 2.0, 5, 5, 10000, 50, 50, new int[] { 3, 2, 5, 7, 6 }, new int[] { 5, 3, 1, 4, 6 }, new int[5][] { new int[5] { 0, 3, 4, 8, 0 }, new int[5] { 3, 0, 3, 9, 6 }, new int[5] { 4, 3, 0, 0, 7 }, new int[5] { 8, 9, 0, 0, 6 }, new int[5] { 0, 6, 7, 6, 0 } }, new int[5][] { new int[5] { 0, 2, 3, 10, 0 }, new int[5] { 2, 0, 3, 7, 5 }, new int[5] { 3, 3, 0, 0, 2 }, new int[5] { 10, 7, 0, 0, 7 }, new int[5] { 0, 5, 2, 7, 0 } }, new int[] { 4, 3, 2, 5, 7 });
-            ViewBag.Path = AntColonyMain.Execute(setup);
+            //AntColonyAlgorithmSetup setup = new AntColonyAlgorithmSetup("test1", 3, 2, 0.01, 2.0, 5, 5, 10000, 50, 50, new int[] { 3, 2, 5, 7, 6 }, new int[] { 5, 3, 1, 4, 6 }, new int[5][] { new int[5] { 0, 3, 4, 8, 0 }, new int[5] { 3, 0, 3, 9, 6 }, new int[5] { 4, 3, 0, 0, 7 }, new int[5] { 8, 9, 0, 0, 6 }, new int[5] { 0, 6, 7, 6, 0 } }, new int[5][] { new int[5] { 0, 2, 3, 10, 0 }, new int[5] { 2, 0, 3, 7, 5 }, new int[5] { 3, 3, 0, 0, 2 }, new int[5] { 10, 7, 0, 0, 7 }, new int[5] { 0, 5, 2, 7, 0 } }, new int[] { 4, 3, 2, 5, 7 });
+            //ViewBag.Path = AntColonyMain.Execute(setup); використання алгоритму
+
+            //List<City> cities = cities_db.Cities.ToList();
+            SelectList cities = new SelectList(cities_db.Cities, "ID", "Name");
+            ViewBag.Cities = cities;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult GetChosenCities(int[] selected)
+        {
+            selected_cities = selected;
+            return RedirectToAction("GetHtml", "Home");
         }
 
         public ActionResult GetHtml()

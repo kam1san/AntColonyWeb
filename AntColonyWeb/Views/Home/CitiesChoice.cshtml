@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div>
+    <h2>Choose cities you need:</h2>
+    @using (Html.BeginForm("GetChosenCities", "Home", FormMethod.Post))
+    {
+        @*<select class="selectpicker" id="selected" name="selected" multiple>
+                    @foreach (var city in Model)
+                        {
+                          <option value="@city">@city.Name</option>
+                        }
+                </select>
+
+
+            <input class="btn-1" type="submit" />*@
+        @Html.DropDownList("selected", ViewBag.Cities as SelectList, new { @class="selectpicker", multiselect=""})<br/>
+        <input class="btn-1" style="width:auto;" type="submit" />
+    }
+</div>
