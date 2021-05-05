@@ -1,20 +1,59 @@
-﻿@{
+﻿@model IEnumerable<AntColonyWeb.Models.City>
+@{
     ViewBag.Title = "Home Page";
 }
-<div>
-    <h2>Choose cities you need:</h2>
-    @using (Html.BeginForm("GetChosenCities", "Home", FormMethod.Post))
-    {
-        @*<select class="selectpicker" id="selected" name="selected" multiple>
-                    @foreach (var city in Model)
-                        {
-                          <option value="@city">@city.Name</option>
-                        }
+
+<div class="div_block">
+    @*@using (Html.BeginForm("GetChosenCities", "Home", FormMethod.Post))
+            {
+        <div>
+            @Html.DropDownList("selected", ViewBag.Cities as SelectList, new { @class = "selectpicker" })
+        </div>
+                <input class="btn-1" style="width:auto; margin-top: 20px;" type="submit" />
+            }*@
+
+
+
+    <form action="/Home/GetChosenCities" method="post">
+
+        <div >
+            <h2 style="margin-bottom: 30px;">Choose cities you want:</h2>
+            <select class="selectpicker" name="selected" multiple>
+                @foreach (var city in Model)
+                {
+                    <option value="@city.ID">@city.Name</option>
+                }
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-8 col-sm-8">
+                <h2 style="margin-bottom: 30px;">Input amount of fuel, your vehicle consume per 100 km:</h2>
+                <input name="fuel_cons" value="20" type="number" style="width: 50%;" class="form-control" placeholder="Input fuel amount">
+            </div>
+
+            <div class="col-4 col-sm-4">
+                <h2 style="margin-bottom: 30px;">Select your fuel type:</h2>
+                <select class="selectpicker" name="fuel_t">
+                    <option value="A-95">Бензин А-95</option>
+                    <option value="A-92">Бензин А-92</option>
+                    <option value="Dizel">Дизельне пальне</option>
+                    <option value="Gas">Газ</option>
                 </select>
+            </div>
+        </div>
 
-
-            <input class="btn-1" type="submit" />*@
-        @Html.DropDownList("selected", ViewBag.Cities as SelectList, new { @class="selectpicker", multiselect=""})<br/>
-        <input class="btn-1" style="width:auto;" type="submit" />
-    }
+        <div style="text-align: center;">
+            <input class="btn-1" style="width:200px; margin-top: 30px;" type="submit" />
+        </div>
+    </form>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        var div_select = document.getElementsByClassName('bootstrap-select')[0];
+        div_select.setAttribute("style", "width: 100%;");
+      //var select = document.getElementsByTagName('select')[0];
+      //select.setAttribute("multiple", "");  
+    });
+</script>

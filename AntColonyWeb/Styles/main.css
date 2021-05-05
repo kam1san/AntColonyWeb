@@ -14,3 +14,10 @@
     border: 2px white solid;
     color: #53afed;
 }
+
+.div_block {
+    background-color: white;
+    padding: 20px;
+    border: 2px white solid;
+    border-radius: 30px;
+}
