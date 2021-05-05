@@ -1,30 +1,33 @@
-﻿
+﻿@model IEnumerable<AntColonyWeb.Models.City>
 @{
     ViewBag.Title = "GetHtml";
 }
 
 <h2>GetHtml</h2>
 
+@Html.BeginForm(){  
 <table class="table">
     <tr>
-        <th>From</th>
-        <th>To</th>
-        <th>Km</th>
-        <th>Time</th>
+        <th>City name</th>
+        <th>Cost</th>
+        <th>Time to visit</th>
+        <th>Value</th>
     </tr>
-            @foreach (var item in ViewBag.Distances)
+            @foreach (var city in Model)
             {
-                <tr>
-                @for (int i = 0; i < item.Length; i++)
-                { 
-                    <td> @item[i]</td>
-                }
-                    </tr>
+<tr>
+    <td>@city.Name</td>
+    <td>@Html.EditorFor(m => city.Cost)</td>
+    <td>@Html.EditorFor(m => city.Time)</td>
+    <td>@Html.EditorFor(m => city.Value)</td>
+</tr>
             }
 
 </table>
+<input class="btn-1" style="width:200px; margin-top: 30px;" type="submit" />
+}
 
-<h3>Ціна на пальне </h3>
-<p>@ViewBag.FuelPrice</p>
+<h3>Ціна на @ViewBag.FuelType:</h3>
+<h4>@ViewBag.FuelPrice</h4>
 
 

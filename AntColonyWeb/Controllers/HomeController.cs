@@ -34,18 +34,18 @@ namespace AntColonyWeb.Controllers
 
         public ActionResult GetHtml()
         {
-            City Kiev = cities_db.Cities.Where(x=>x.Name=="Київ").FirstOrDefault();
-            //ViewBag.city = Kiev;
-            List<string[]> distances = new List<string[]>();
-            foreach (City city in cities_db.Cities.ToList())
+            List<City> selected_cities_list = new List<City>();
+            int[] selected_cities_indexes = (int[])HttpContext.Session["Selected_Cities"];
+
+            for(int i=0; i<selected_cities_indexes.Length; i++)
             {
-                if (city.Name == "Київ")
-                    continue;
-                distances.Add(HtmlParser.GetRoutesInfo(Kiev, city));
+                int city = selected_cities_indexes[i];
+                selected_cities_list.Add(cities_db.Cities.Where(x => x.ID == city).FirstOrDefault());
             }
-            ViewBag.Distances = distances;
+
             ViewBag.FuelPrice = HtmlParser.GetFuelPrice((string)HttpContext.Session["Fuel_Type"]);
-            return View();
+            ViewBag.FuelType = (string)HttpContext.Session["Fuel_Type"];
+            return View(selected_cities_list);
         }
 
         public ActionResult GetCities()
