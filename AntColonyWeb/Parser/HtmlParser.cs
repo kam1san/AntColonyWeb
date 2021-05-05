@@ -11,7 +11,7 @@ namespace AntColonyWeb.Parser
 {
     public class HtmlParser
     {
-        public static string[] GetHtml(City c1, City c2)
+        public static string[] GetRoutesInfo(City c1, City c2)
         {
             string url = $"https://degruz.ua/calculation_of_distance/route={c1.ID}:{c2.ID}";
             HttpWebRequest myHttwebrequest = (HttpWebRequest)HttpWebRequest.Create(url);
@@ -48,5 +48,50 @@ namespace AntColonyWeb.Parser
                 return result;
             }
         }
+
+        public static string GetFuelPrice(string fuel_type)
+        {
+            string url = "https://index.minfin.com.ua/ua/markets/fuel/";
+            HttpWebRequest myHttwebrequest = (HttpWebRequest)HttpWebRequest.Create(url);
+            //myHttwebrequest.Timeout = 10;
+            HttpWebResponse myHttpWebresponse = (HttpWebResponse)myHttwebrequest.GetResponse();
+            StreamReader strm = new StreamReader(myHttpWebresponse.GetResponseStream());
+            string HtmlText = strm.ReadToEnd();
+            if (fuel_type == "Пальне А-95")
+            {
+                var searchFor = "Бензин А-95</a></td><td align='center'><br></td><td align='right'><big>";
+                int firstIndex = HtmlText.IndexOf(searchFor);
+                int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
+                string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
+                return fuel_price;
+            }
+            else if (fuel_type == "Пальне А-92")
+            {
+                var searchFor = "Бензин А-92</a></td><td align='center'><br></td><td align='right'><big>";
+                int firstIndex = HtmlText.IndexOf(searchFor);
+                int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
+                string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
+                return fuel_price;
+            }
+            else if (fuel_type == "Дизельне пальне")
+            {
+                var searchFor = "Дизельне паливо</a></td><td align='center'><br></td><td align='right'><big>";
+                int firstIndex = HtmlText.IndexOf(searchFor);
+                int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
+                string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
+                return fuel_price;
+            }
+            else if (fuel_type == "Газ")
+            {
+                var searchFor = "Газ авто&shy;мобільний</a></td><td align='center'><br></td><td align='right'><big>";
+                int firstIndex = HtmlText.IndexOf(searchFor);
+                int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
+                string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
+                return fuel_price;
+            }
+            else
+                return "";
+        } 
+
     }
 }

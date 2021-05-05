@@ -14,9 +14,6 @@ namespace AntColonyWeb.Controllers
     public class HomeController : Controller
     {
         CitiesContext cities_db = new CitiesContext();
-        int[] selected_cities;
-        int fuel_consumption;
-        string fuel_type;
 
         public ActionResult CitiesChoice()
         {
@@ -28,10 +25,10 @@ namespace AntColonyWeb.Controllers
 
         [HttpPost]
         public ActionResult GetChosenCities(int[] selected, int fuel_cons, string fuel_t)
-        {
-            selected_cities = selected;
-            fuel_consumption = Convert.ToInt32(fuel_cons);
-            fuel_type = fuel_t;
+        { 
+            HttpContext.Session["Selected_Cities"] = selected;
+            HttpContext.Session["Fuel_Consumption"] = fuel_cons;
+            HttpContext.Session["Fuel_Type"] = fuel_t;
             return RedirectToAction("GetHtml", "Home");
         }
 
@@ -44,9 +41,10 @@ namespace AntColonyWeb.Controllers
             {
                 if (city.Name == "Київ")
                     continue;
-                distances.Add(HtmlParser.GetHtml(Kiev, city));
+                distances.Add(HtmlParser.GetRoutesInfo(Kiev, city));
             }
             ViewBag.Distances = distances;
+            ViewBag.FuelPrice = HtmlParser.GetFuelPrice((string)HttpContext.Session["Fuel_Type"]);
             return View();
         }
 
