@@ -319,6 +319,7 @@
     <Content Include="Views\Home\CitiesChoice.cshtml" />
     <Content Include="Views\Home\GetCities.cshtml" />
     <Content Include="Views\Home\GetHtml.cshtml" />
+    <Content Include="Views\Home\GetAllCities.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

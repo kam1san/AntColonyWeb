@@ -1,11 +1,13 @@
-﻿@model IEnumerable<AntColonyWeb.Models.City>
+﻿@model List<AntColonyWeb.Models.City>
 @{
     ViewBag.Title = "GetHtml";
 }
 
 <h2>GetHtml</h2>
 
-@Html.BeginForm(){  
+@*<form action="/Home/GetHtml" method="post">*@
+@using (Html.BeginForm())
+{
 <table class="table">
     <tr>
         <th>City name</th>
@@ -13,21 +15,33 @@
         <th>Time to visit</th>
         <th>Value</th>
     </tr>
-            @foreach (var city in Model)
-            {
-<tr>
-    <td>@city.Name</td>
-    <td>@Html.EditorFor(m => city.Cost)</td>
-    <td>@Html.EditorFor(m => city.Time)</td>
-    <td>@Html.EditorFor(m => city.Value)</td>
-</tr>
-            }
-
-</table>
-<input class="btn-1" style="width:200px; margin-top: 30px;" type="submit" />
+    @*@foreach (var city in Model)
+        {
+            <tr>
+                <td>@city.Name</td>
+                <td>@Html.EditorFor(m => city.Cost)</td>
+                <td>@Html.EditorFor(m => city.Time)</td>
+                <td>@Html.EditorFor(m => city.Value)</td>
+            </tr>
+        }*@
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            @Html.HiddenFor(m => m[i].ID)
+            @Html.HiddenFor(m => m[i].Name)
+            <td>@Model[i].Name</td>
+            <td>@Html.EditorFor(m => m[i].Cost)</td>
+            <td>@Html.EditorFor(m => m[i].Time)</td>
+            <td>@Html.EditorFor(m => m[i].Value)</td>
+        </tr>
+    }
+    </table>
+    <input class="btn-1" style="width:200px; margin-top: 30px;" value="Accept" type="submit" />
 }
+    @*</form>*@
 
-<h3>Ціна на @ViewBag.FuelType:</h3>
-<h4>@ViewBag.FuelPrice</h4>
+
+    <h3>Ціна на @ViewBag.FuelType:</h3>
+    <h4>@ViewBag.FuelPrice</h4>
 
 

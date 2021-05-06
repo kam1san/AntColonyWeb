@@ -8,6 +8,7 @@ using AntColonyWeb.Models;
 using AntColonyWeb.Models.Context;
 using AntColonyWeb.Parser;
 using Google.Apis.CustomSearchAPI;
+using System.Data.Entity;
 
 namespace AntColonyWeb.Controllers
 {
@@ -48,10 +49,32 @@ namespace AntColonyWeb.Controllers
             return View(selected_cities_list);
         }
 
+        [HttpPost]
+        public ActionResult GetHtml(List<City> edited_cities)
+        {
+            foreach (var city in edited_cities)
+                cities_db.Entry(city).State = EntityState.Modified;
+            cities_db.SaveChanges();
+            return RedirectToAction("GetCities", "Home");
+        }
+
         public ActionResult GetCities()
         {
+            List<City> selected_cities_list = new List<City>();
+            int[] selected_cities_indexes = (int[])HttpContext.Session["Selected_Cities"];
+
+            for (int i = 0; i < selected_cities_indexes.Length; i++)
+            {
+                int city = selected_cities_indexes[i];
+                selected_cities_list.Add(cities_db.Cities.Where(x => x.ID == city).FirstOrDefault());
+            }
             var cities = cities_db.Cities;
-            return View(cities.ToList());
+            return View(selected_cities_list);
+        }
+
+        public ActionResult GetAllCities()
+        {
+            return View(cities_db.Cities.ToList());
         }
 
         protected override void Dispose(bool disposing)
