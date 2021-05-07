@@ -16,9 +16,9 @@
 
     <form action="/Home/GetChosenCities" method="post">
 
-        <div >
+        <div>
             <h2 style="margin-bottom: 30px;">Choose cities you want:</h2>
-            <select class="selectpicker" name="selected" multiple>
+            <select required class="selectpicker" name="selected" multiple>
                 @foreach (var city in Model)
                 {
                     <option value="@city.ID">@city.Name</option>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-8 col-sm-8">
                 <h2 style="margin-bottom: 30px;">Input amount of fuel, your vehicle consume per 100 km:</h2>
-                <input name="fuel_cons" value="20" type="number" style="width: 50%;" class="form-control" placeholder="Input fuel amount">
+                <input name="fuel_cons" required value="10" type="number" style="width: 50%;" class="form-control" placeholder="Input fuel amount">
             </div>
 
             <div class="col-4 col-sm-4">
@@ -41,6 +41,25 @@
                 </select>
             </div>
         </div>
+
+                <h2 style="margin-bottom: 30px;">Total money budget:</h2>
+                <div class="input-group"  style="width:30%">
+                    <span class="input-group-addon">
+                        UAH
+                    </span>
+                    <input type="text" name="TotalMoney" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-addon">
+                        .00
+                    </span>
+                </div>
+
+                <h2 style="margin-bottom: 30px;">Total time avaliable:</h2>
+                <label>Days:</label>
+                <input name="TotalTimeDays" required type="number" style="width: 30%;" class="form-control" placeholder="Input amount of days">
+                <label>Hours:</label>
+                <input name="TotalTimeHours" required type="number" style="width: 30%;" class="form-control" placeholder="Input amount of hours">
+                <label>Minutes:</label>
+                <input name="TotalTimeMinutes" value="0" required type="number" style="width: 30%;" class="form-control" placeholder="Input amount of minutes">
 
         <div style="text-align: center;">
             <input class="btn-1" value="Accept" style="width:200px; margin-top: 30px;" type="submit" />

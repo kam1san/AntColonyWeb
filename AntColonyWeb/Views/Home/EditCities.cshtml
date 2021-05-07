@@ -1,0 +1,57 @@
+﻿@model List<AntColonyWeb.Models.City>
+@{
+    ViewBag.Title = "GetHtml";
+}
+
+<h2>GetHtml</h2>
+
+@*<form action="/Home/GetHtml" method="post">*@
+@using (Html.BeginForm())
+{
+<table class="table" style=" border: 2px #337ab7 solid;">
+    <tr class="bg-primary">
+        <th>City name</th>
+        <th>Average cost (per day)</th>
+        <th>Time to visit</th>
+        <th>Value</th>
+    </tr>
+    @*@foreach (var city in Model)
+        {
+            <tr>
+                <td>@city.Name</td>
+                <td>@Html.EditorFor(m => city.Cost)</td>
+                <td>@Html.EditorFor(m => city.Time)</td>
+                <td>@Html.EditorFor(m => city.Value)</td>
+            </tr>
+        }*@
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr class="table-light">
+            @Html.HiddenFor(m => m[i].ID)
+            @Html.HiddenFor(m => m[i].Name)
+            <td>@Model[i].Name</td>
+            <td>
+                <div class="input-group" style="width:30%">
+                    <span class="input-group-addon">
+                        UAH
+                    </span>
+                    @Html.TextBoxFor(m => m[i].Cost, new {  @class="form_control" })
+                    <span class="input-group-addon">
+                        .00
+                    </span>
+                </div>
+            </td>
+        <td>
+            <span>Days: </span>@Html.TextBoxFor(m => m[i].Days, new { @style= "margin-bottom: 15px;border-radius: 5px;border: 1px black solid;" })<br>
+            <span>Hours: </span>@Html.TextBoxFor(m => m[i].Hours, new { @style = "margin-bottom: 15px;border-radius: 5px;border: 1px black solid;" })<br>
+            <span>Minutes: </span>@Html.TextBoxFor(m => m[i].Minutes, new { @style = "margin-bottom: 15px;border-radius: 5px;border: 1px black solid;" })
+        </td>
+            <td>@Html.TextBoxFor(m => m[i].Value, new { @style = "border-radius: 5px;border: 1px black solid;", value=Model[i].Value })</td>
+        </tr>
+    }
+    </table>
+    <input class="btn-1" style="width:200px; margin-top: 30px;" value="Accept" type="submit" />
+}
+    @*</form>*@
+
+

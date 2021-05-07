@@ -25,51 +25,45 @@ namespace AntColonyWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetChosenCities(int[] selected, int fuel_cons, string fuel_t)
-        { 
-            HttpContext.Session["Selected_Cities"] = selected;
-            HttpContext.Session["Fuel_Consumption"] = fuel_cons;
-            HttpContext.Session["Fuel_Type"] = fuel_t;
-            return RedirectToAction("GetHtml", "Home");
-        }
-
-        public ActionResult GetHtml()
+        public ActionResult GetChosenCities(int[] selected, int fuel_cons, string fuel_t, int TotalMoney, int TotalTimeDays, int TotalTimeHours, int TotalTimeMinutes)
         {
             List<City> selected_cities_list = new List<City>();
-            int[] selected_cities_indexes = (int[])HttpContext.Session["Selected_Cities"];
 
-            for(int i=0; i<selected_cities_indexes.Length; i++)
+            for (int i = 0; i < selected.Length; i++)
             {
-                int city = selected_cities_indexes[i];
+                int city = selected[i];
                 selected_cities_list.Add(cities_db.Cities.Where(x => x.ID == city).FirstOrDefault());
             }
+            HttpContext.Session["Selected_Cities"] = selected_cities_list;
 
+            HttpContext.Session["Fuel_Consumption"] = fuel_cons;
+            HttpContext.Session["Fuel_Type"] = fuel_t;
+            HttpContext.Session["Total_Money"] = TotalMoney;
+            HttpContext.Session["Total_Time"] = TotalTimeDays*360 + TotalTimeHours*60 + TotalTimeMinutes;
+            return RedirectToAction("EditCities", "Home");
+        }
+
+        public ActionResult EditCities()
+        {
             ViewBag.FuelPrice = HtmlParser.GetFuelPrice((string)HttpContext.Session["Fuel_Type"]);
             ViewBag.FuelType = (string)HttpContext.Session["Fuel_Type"];
-            return View(selected_cities_list);
+            return View((List<City>)HttpContext.Session["Selected_Cities"]);
         }
 
         [HttpPost]
-        public ActionResult GetHtml(List<City> edited_cities)
+        public ActionResult EditCities(List<City> edited_cities)
         {
-            foreach (var city in edited_cities)
-                cities_db.Entry(city).State = EntityState.Modified;
-            cities_db.SaveChanges();
+            HttpContext.Session["Selected_Cities"] = edited_cities;
+            //foreach (var city in edited_cities)
+            //    cities_db.Entry(city).State = EntityState.Modified;
+            //cities_db.SaveChanges();
+
             return RedirectToAction("GetCities", "Home");
         }
 
         public ActionResult GetCities()
         {
-            List<City> selected_cities_list = new List<City>();
-            int[] selected_cities_indexes = (int[])HttpContext.Session["Selected_Cities"];
-
-            for (int i = 0; i < selected_cities_indexes.Length; i++)
-            {
-                int city = selected_cities_indexes[i];
-                selected_cities_list.Add(cities_db.Cities.Where(x => x.ID == city).FirstOrDefault());
-            }
-            var cities = cities_db.Cities;
-            return View(selected_cities_list);
+            return View((List<City>)HttpContext.Session["Selected_Cities"]);
         }
 
         public ActionResult GetAllCities()

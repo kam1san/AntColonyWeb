@@ -6,22 +6,19 @@
 
 <h2>GetAllCities</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cost)
+            Cost
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Time)
+            Time
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Value)
+            Value
         </th>
         <th></th>
     </tr>
@@ -35,15 +32,12 @@
             @Html.DisplayFor(modelItem => item.Cost)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Time)
+            <span>Days: </span>@Html.DisplayFor(modelItem => item.Days, new { @style = "margin-bottom: 15px;" })<br>
+            <span>Hours: </span>@Html.DisplayFor(modelItem => item.Hours, new { @style = "margin-bottom: 15px;" })<br>
+            <span>Minutes: </span>@Html.DisplayFor(modelItem => item.Minutes, new { @style = "margin-bottom: 15px;" })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Value)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

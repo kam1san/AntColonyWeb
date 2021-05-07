@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace AntColonyWeb.Models
+namespace AntColonyWeb.AntColony
 {
     public class AntColonyAlgorithmSetup
     {

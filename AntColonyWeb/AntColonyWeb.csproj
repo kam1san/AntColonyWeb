@@ -145,7 +145,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AntColonyAlgorithmSetup.cs" />
+    <Compile Include="AntColony\AntColonyAlgorithmSetup.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Context\CitiesContext.cs" />
     <Compile Include="Parser\HtmlParser.cs" />
@@ -318,7 +318,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\CitiesChoice.cshtml" />
     <Content Include="Views\Home\GetCities.cshtml" />
-    <Content Include="Views\Home\GetHtml.cshtml" />
+    <Content Include="Views\Home\EditCities.cshtml" />
     <Content Include="Views\Home\GetAllCities.cshtml" />
   </ItemGroup>
   <ItemGroup />

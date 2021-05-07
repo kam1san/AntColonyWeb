@@ -16,15 +16,15 @@
     <div id="menu" class="row" style="padding: 20px; width: 90%; margin: auto; ">
         <div class="col-sm-3" style="text-align: center;">
             @*<button class="btn-1" style="color:white;">@Html.ActionLink("Main", "Index", "Home")</button>*@
-            <input class="btn-1" type="button" name="CitiesChoice" runat="server" value="CitiesChoice" onclick="router('CitiesChoice')" />
+            <input class="btn-1" type="button" name="CitiesChoice" runat="server" value="Startup configuration" onclick="router('CitiesChoice')" />
         </div>
         <div class="col-sm-3" style="text-align: center;">
             @*<button class="btn-1" style="color:white">@Html.ActionLink("Get distances", "GetHtml", "Home")</button>*@
-            <input class="btn-1" type="button" name="GetHtml" runat="server" value="GetHtml" onclick="router('GetHtml')" />
+            <input class="btn-1" type="button" name="GetHtml" runat="server" value="Edit selected cities options" onclick="router('EditCities')" />
         </div>
         <div class="col-sm-3" style="text-align: center;">
             @*<button class="btn-1" style="color:white">@Html.ActionLink("Get all cities", "GetCities", "Home")</button>*@
-            <input class="btn-1" type="button" name="GetCities" runat="server" value="GetCities" onclick="router('GetCities')" />
+            <input class="btn-1" type="button" name="GetCities" runat="server" value="View selected options" onclick="router('GetCities')" />
         </div>
     </div>
 
