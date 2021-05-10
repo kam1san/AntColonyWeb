@@ -25,11 +25,11 @@ namespace AntColonyWeb.AntColony
         private static int[][] dists_time;
         private static int[] values;
 
-        public static string Execute(AntColonyAlgorithmSetup setup)
+        public static AntColonyResult Execute(AntColonyAlgorithmSetup setup)
         {
             return AntColony(setup);
         }
-        private static string AntColony(AntColonyAlgorithmSetup setup)
+        private static AntColonyResult AntColony(AntColonyAlgorithmSetup setup)
         {
             Console.Clear();
             try
@@ -113,13 +113,15 @@ namespace AntColonyWeb.AntColony
 
                 Console.WriteLine("\nBest trail found:");
                 Console.WriteLine("\nLength of best trail found: COST: {0}  TIME: {1}  VALUE: {2} ", bestLength[0].ToString("F1"), bestLength[1].ToString("F1"), bestValue);
-                return Display(bestTrail);
+                List<int> trail = Display(bestTrail);
+                AntColonyResult result = new AntColonyResult(trail, bestLength[0], bestLength[1], bestValue);
+                return result;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("No solution for this graph...");
                 Console.ReadLine();
-                return "ERROR" + ex.Message;
+                return null; 
             }
         }
 
@@ -571,9 +573,10 @@ namespace AntColonyWeb.AntColony
 
         // --------------------------------------------------------------------------------------------
 
-        private static string Display(int[] trail)
+        private static List<int> Display(int[] trail)
         {
             string result = "";
+            List<int> res = new List<int>();
             int ind = 0;
             for (int i = 0; i < trail.Length; i++)
             {
@@ -586,23 +589,35 @@ namespace AntColonyWeb.AntColony
                 for (int i = 0; i <= trail.Length; i++)
                 {
                     if (i == trail.Length && trail[i - 1] != trail[0])
+                    {
                         //Console.Write(trail[0] + 1);
                         result += trail[0] + 1;
+                        res.Add(trail[0]);
+                    }
                     else
                     {
                         if (i == trail.Length - 1)
                         {
                             if (trail[i] == trail[0])
+                            {
                                 //Console.Write(trail[0] + 1);
                                 result += trail[0] + 1;
+                                res.Add(trail[0]);
+                            }
                             else
+                            {
                                 //Console.Write(trail[i] + 1 + " ---> ");
                                 result += trail[i] + 1 + " ---> ";
+                                res.Add(trail[i]);
+                            }
                         }
 
                         if (i < trail.Length - 1)
+                        {
                             //Console.Write(trail[i] + 1 + " ---> ");
                             result += trail[i] + 1 + " ---> ";
+                            res.Add(trail[i]);
+                        }
                     }
                 }
             }
@@ -611,26 +626,37 @@ namespace AntColonyWeb.AntColony
                 for (int i = 0; i < trail.Length; i++)
                 {
                     if (trail[i] == -1)
+                    {
                         //Console.Write("");
                         result += "";
+                    }
                     else
                     {
                         if (i != trail.Length - 1)
                         {
                             if (trail[i + 1] == -1)
+                            {
                                 //Console.Write(trail[i] + 1);
                                 result += trail[i] + 1;
+                                res.Add(trail[i]);
+                            }
                             else
+                            {
                                 //Console.Write(trail[i] + 1 + " ---> ");
                                 result += trail[i] + 1 + " ---> ";
+                                res.Add(trail[i]);
+                            }
                         }
                         else
+                        {
                             //Console.Write(trail[i] + 1);
                             result += trail[i] + 1;
+                            res.Add(trail[i]);
+                        }
                     }
                 }
             }
-            return result;
+            return res;
             //Console.WriteLine();
         }
 

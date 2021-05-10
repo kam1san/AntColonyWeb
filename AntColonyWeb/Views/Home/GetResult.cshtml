@@ -1,0 +1,53 @@
+﻿@using AntColonyWeb.AntColony
+@{
+    ViewBag.Title = "GetCities";
+    AntColonyResult result = ViewBag.AntColonyResult;
+}
+
+<h2>Result path:</h2>
+<div class="row" style="padding:20px;">
+    @for (int i = 0; i < result.Path_Cities.Count; i++)
+    {
+        <div class="col-sm-3 col-3">
+            @if (i < result.Path_Cities.Count - 1)
+            {
+                <div class="row" style="display: -webkit-inline-box;">
+                    <div class="col-sm-7 col-7" style="padding: 15px; border: 2px #53afed solid; border-radius: 20px;">
+                        <h3 style="margin: 10px;">@result.Path_Cities[i].Name</h3>
+                        <p>Approximate cost:</p>
+                        <p>@result.Path_Cities[i].Cost</p>
+                        <p>Time spent:</p>
+                        <p>Days: @result.Path_Cities[i].Days Hours: @result.Path_Cities[i].Hours</p>
+                    </div>
+                    <div class="col-sm-5 col-5">
+                        <h1 style="float: left;">---></h1>
+                        <p>Approximate cost:</p>
+                        <p>@result.distances_cost[i]</p>
+                        <p>Time spent:</p>
+                        <p>@result.distances_time[i]</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row" style="display: -webkit-inline-box;">
+                    <div class="col-sm-12 col-12" style="padding: 15px; border: 2px #53afed solid; border-radius: 20px;">
+                        <h3>@result.Path_Cities[i].Name</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<div>
+    <h2>Money spent:</h2>
+    <p>@result.Money</p>
+
+    <h2>Time spent:</h2>
+    <p>@result.Time_Non_Convert</p>
+</div>
+
+
+
+

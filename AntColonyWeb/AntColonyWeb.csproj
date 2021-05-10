@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AntColony\AntColonyMain.cs" />
+    <Compile Include="AntColony\AntColonyResult.cs" />
     <Compile Include="AntColony\Solver.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -148,7 +149,9 @@
     <Compile Include="AntColony\AntColonyAlgorithmSetup.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Context\CitiesContext.cs" />
+    <Compile Include="Models\Pricing.cs" />
     <Compile Include="Parser\HtmlParser.cs" />
+    <Compile Include="Parser\TimeConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -317,7 +320,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\CitiesChoice.cshtml" />
-    <Content Include="Views\Home\GetCities.cshtml" />
+    <Content Include="Views\Home\GetResult.cshtml" />
     <Content Include="Views\Home\EditCities.cshtml" />
     <Content Include="Views\Home\GetAllCities.cshtml" />
   </ItemGroup>

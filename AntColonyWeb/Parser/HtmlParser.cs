@@ -29,8 +29,8 @@ namespace AntColonyWeb.Parser
                 firstIndex = HtmlText.IndexOf(searchFor);
                 secondIndex = HtmlText.IndexOf("</b></span>", firstIndex);
                 string time = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
-                string[] result = new string[4];
-                result[0] = c1.Name; result[1] = c2.Name; result[2] = distance; result[3] = time;
+                string[] result = new string[2];
+                 result[0] = distance; result[1] = time;
                 return result;
             }
             catch
@@ -43,13 +43,13 @@ namespace AntColonyWeb.Parser
                 firstIndex = HtmlText.IndexOf(searchFor, firstIndex);
                 secondIndex = HtmlText.IndexOf("</b></span>", firstIndex);
                 string time = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
-                string[] result = new string[4];
-                result[0] = c1.Name; result[1] = c2.Name; result[2] = distance; result[3] = time;
+                string[] result = new string[2];
+                result[0] = distance; result[1] = time;
                 return result;
             }
         }
 
-        public static string GetFuelPrice(string fuel_type)
+        public static double GetFuelPrice(string fuel_type)
         {
             string url = "https://index.minfin.com.ua/ua/markets/fuel/";
             HttpWebRequest myHttwebrequest = (HttpWebRequest)HttpWebRequest.Create(url);
@@ -63,7 +63,7 @@ namespace AntColonyWeb.Parser
                 int firstIndex = HtmlText.IndexOf(searchFor);
                 int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
                 string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
-                return fuel_price;
+                return Math.Round(Convert.ToDouble(fuel_price), 2);
             }
             else if (fuel_type == "Пальне А-92")
             {
@@ -71,7 +71,7 @@ namespace AntColonyWeb.Parser
                 int firstIndex = HtmlText.IndexOf(searchFor);
                 int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
                 string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
-                return fuel_price;
+                return Math.Round(Convert.ToDouble(fuel_price), 2);
             }
             else if (fuel_type == "Дизельне пальне")
             {
@@ -79,7 +79,7 @@ namespace AntColonyWeb.Parser
                 int firstIndex = HtmlText.IndexOf(searchFor);
                 int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
                 string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
-                return fuel_price;
+                return Math.Round(Convert.ToDouble(fuel_price), 2);
             }
             else if (fuel_type == "Газ")
             {
@@ -87,10 +87,10 @@ namespace AntColonyWeb.Parser
                 int firstIndex = HtmlText.IndexOf(searchFor);
                 int secondIndex = HtmlText.IndexOf("</big>", firstIndex);
                 string fuel_price = HtmlText.Substring(firstIndex + searchFor.Length, secondIndex - firstIndex - searchFor.Length);
-                return fuel_price;
+                return Math.Round(Convert.ToDouble(fuel_price), 2);
             }
             else
-                return "";
+                return 0;
         } 
 
     }

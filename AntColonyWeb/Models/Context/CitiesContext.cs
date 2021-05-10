@@ -9,5 +9,6 @@ namespace AntColonyWeb.Models.Context
     public class CitiesContext:DbContext
     {
         public DbSet<City> Cities { get; set; }
+        public DbSet<Pricing> Pricings{ get; set; }
     }
 }

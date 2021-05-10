@@ -21,3 +21,41 @@
     border: 2px white solid;
     border-radius: 30px;
 }
+
+.dropdown-enter,
+.dropdown-leave-to {
+    transform: scaleY(0.7);
+    opacity: 0;
+}
+
+.dropdown-enter-to,
+.dropdown-leave {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+    transition: all 0.3s ease-out;
+    transform-origin: top center;
+}
+
+.circled_button {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    background-color: #53afed;
+    border-style: none;
+}
+
+    .circled_button:hover {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        font-size: 20px;
+        color: white;
+        background-color: white;
+        border-style: none;
+    } 
