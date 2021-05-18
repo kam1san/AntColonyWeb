@@ -28,7 +28,12 @@
         <div class="row">
             <div class="col-8 col-sm-8">
                 <h2 style="margin-bottom: 30px;">Input amount of fuel, your vehicle consume per 100 km:</h2>
-                <input name="fuel_cons" required value="10" type="number" style="width: 50%;" class="form-control" placeholder="Input fuel amount">
+                <div class="input-group" style="width:30%">
+                    <input name="fuel_cons" required value="10" type="number" class="form-control" placeholder="Input fuel amount">
+                    <span class="input-group-addon">
+                        Liters
+                    </span>
+                </div>
             </div>
 
             <div class="col-4 col-sm-4">
@@ -57,7 +62,7 @@
                 <label>Days:</label>
                 <input name="TotalTimeDays" required type="number" style="width: 30%;" class="form-control" placeholder="Input amount of days">
                 <label>Hours:</label>
-                <input name="TotalTimeHours" required type="number" style="width: 30%;" class="form-control" placeholder="Input amount of hours">
+                <input name="TotalTimeHours" value="0" required type="number" style="width: 30%;" class="form-control" placeholder="Input amount of hours">
                 <label>Minutes:</label>
                 <input name="TotalTimeMinutes" value="0" required type="number" style="width: 30%;" class="form-control" placeholder="Input amount of minutes">
 

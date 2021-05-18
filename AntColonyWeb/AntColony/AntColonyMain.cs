@@ -12,8 +12,8 @@ namespace AntColonyWeb.AntColony
     {
         private static Random random = new Random(0);
         private static string folder = AppDomain.CurrentDomain.BaseDirectory;
-        private static int alpha;
-        private static int beta;
+        private static double alpha;
+        private static double beta;
         private static double rho;
         private static double Q;
         private static int numCities;
@@ -366,8 +366,8 @@ namespace AntColonyWeb.AntColony
             for (int k = 0; k <= ants.Length - 1; k++)
             {
                 Random rnd = new Random();
-                int start = rnd.Next(0, numCities);
-                //int start = 1; ТУТ МОЖНА ВКАЗАТИ ПОЧАТКОВУ ТОЧКУ!
+                //int start = rnd.Next(0, numCities);
+                int start = 0; //ТУТ МОЖНА ВКАЗАТИ ПОЧАТКОВУ ТОЧКУ!
                 int[] newTrail = BuildTrail(k, start, pheromones, dists_cost, dists_time);
                 ants[k] = newTrail;
             }

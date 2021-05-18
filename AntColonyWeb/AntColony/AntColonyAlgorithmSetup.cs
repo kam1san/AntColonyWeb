@@ -10,8 +10,8 @@ namespace AntColonyWeb.AntColony
     public class AntColonyAlgorithmSetup
     {
         public string name { get; set; }
-        public int alpha { get; set; }
-        public int beta { get; set; }
+        public double  alpha { get; set; }
+        public double beta { get; set; }
         public double rho { get; set; }
         public double Q { get; set; }
         public int n { get; set; }
@@ -25,7 +25,7 @@ namespace AntColonyWeb.AntColony
         public int[][] DT { get; set; }
         public int[] values { get; set; }
 
-        public AntColonyAlgorithmSetup(string name, int alpha, int beta, double rho, double Q, int n, int m, int iterations, int max_money, int max_time, int[] CC, int[] CT, int[][] DC, int[][] DT, int[] values)
+        public AntColonyAlgorithmSetup(string name, double alpha, double beta, double rho, double Q, int n, int m, int iterations, int max_money, int max_time, int[] CC, int[] CT, int[][] DC, int[][] DT, int[] values)
         {
             this.name = name;
             this.alpha = alpha;

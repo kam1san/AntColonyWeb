@@ -113,7 +113,7 @@ namespace AntColonyWeb.Controllers
             }
 
             AntColonyAlgorithmSetup setup = new AntColonyAlgorithmSetup("test1",
-                3, 2, 0.01, 2.0,
+                0.4, 0.6, 0.01, 2.0,
                 cities.Count,
                 cities.Count,
                 10000,
