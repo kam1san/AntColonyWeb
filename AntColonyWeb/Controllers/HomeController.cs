@@ -157,11 +157,6 @@ namespace AntColonyWeb.Controllers
             return View();
         }
 
-        public ActionResult GetAllCities()
-        {
-            return View(cities_db.Cities.ToList());
-        }
-
         protected override void Dispose(bool disposing)
         {
             cities_db.Dispose();

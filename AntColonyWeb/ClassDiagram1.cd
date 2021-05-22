@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AntColonyWeb.AntColony.AntColonyAlgorithmSetup">
+    <Position X="5" Y="12" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAAAAAAAwAgAABAAIAAAEACABEgAQAAAgAAA=</HashCode>
+      <FileName>AntColony\AntColonyAlgorithmSetup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.AntColony.AntColonyMain">
+    <Position X="1.5" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAUBAAgACIKAAQAAAIABURABQAEAiBBQIQ4AAAggQA=</HashCode>
+      <FileName>AntColony\AntColonyMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.AntColony.AntColonyResult">
+    <Position X="5" Y="16.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAIAAAAAgAAAICAAAAAAAAAgAgAgAQA=</HashCode>
+      <FileName>AntColony\AntColonyResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.AntColony.Solver">
+    <Position X="5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAEAAAAACEkEQAgAQAAAA=</HashCode>
+      <FileName>AntColony\Solver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.BundleConfig">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.FilterConfig">
+    <Position X="5.25" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.RouteConfig">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.MvcApplication">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.Controllers.HomeController">
+    <Position X="7.25" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAIAAIAAIIAAAAAAAAAAAAAAEAAAAAEAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.Models.City">
+    <Position X="9" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQgAAAwAAAABQAAAAAAAAAQAAgAAAAAAA=</HashCode>
+      <FileName>Models\City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.Models.Pricing">
+    <Position X="10.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAgAAIAACAAAAAAgAAAAAAAQAAAgEAAAA=</HashCode>
+      <FileName>Models\Pricing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.Models.Context.CitiesContext">
+    <Position X="7.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Context\CitiesContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.Parser.HtmlParser">
+    <Position X="10.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parser\HtmlParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AntColonyWeb.Parser.TimeConverter">
+    <Position X="12.5" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parser\TimeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
