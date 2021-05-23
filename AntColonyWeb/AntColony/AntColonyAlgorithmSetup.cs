@@ -24,8 +24,9 @@ namespace AntColonyWeb.AntColony
         public int[][] DC { get; set; }
         public int[][] DT { get; set; }
         public int[] values { get; set; }
+        public int startup_city { get; set; }
 
-        public AntColonyAlgorithmSetup(string name, double a, double b, double r, double Q, int n, int m, int iterations, int max_money, int max_time, int[] CC, int[] CT, int[][] DC, int[][] DT, int[] values)
+        public AntColonyAlgorithmSetup(string name, double a, double b, double r, double Q, int n, int m, int iterations, int max_money, int max_time, int[] CC, int[] CT, int[][] DC, int[][] DT, int[] values, int start_city)
         {
             this.name = name;
             this.a = a;
@@ -42,6 +43,7 @@ namespace AntColonyWeb.AntColony
             this.DC = DC;
             this.DT = DT;
             this.values = values;
+            this.startup_city = start_city;
         }
 
         public AntColonyAlgorithmSetup(){}

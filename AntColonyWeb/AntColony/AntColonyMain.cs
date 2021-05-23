@@ -24,6 +24,7 @@ namespace AntColonyWeb.AntColony
         private static int[][] cash_distances;
         private static int[][] time_distances;
         private static int[] values;
+        private static int startup_city_id;
 
         public static AntColonyResult Execute(AntColonyAlgorithmSetup setup)
         {
@@ -175,6 +176,7 @@ namespace AntColonyWeb.AntColony
                 maxTime = setup.iterations;
                 Money = setup.max_money;
                 Time = setup.max_time;
+                startup_city_id = setup.startup_city;
                 if (a < 0 || b < 0 || r < 0 || Q < 0 || n < 2 || ants_quantity < 1 || maxTime < 1 || Money < 0 || Time < 0)
                     throw new Exception("Один або більше параметрів є невірними");
 
@@ -318,8 +320,11 @@ namespace AntColonyWeb.AntColony
             for (int tmp = 0; tmp <= ants.Length - 1; tmp++)
             {
                 Random rnd = new Random();
-                int first = rnd.Next(0, n);
-                //int first = 0; //ПОЧАТКОВА ТОЧКА
+                int first;
+                if (startup_city_id == -1)
+                    first = rnd.Next(0, n);
+                else
+                    first = startup_city_id;
                 int[] newTrail = TrailChoice(tmp, first, f, cash_distances, time_distances);
                 ants[tmp] = newTrail;
             }

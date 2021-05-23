@@ -8,6 +8,16 @@
 @*<form action="/Home/GetHtml" method="post">*@
 @using (Html.BeginForm())
 {
+    <div style="margin-bottom:10px;">
+    <h3>Select startup city:</h3>
+    <select class="selectpicker" name="startup_city">
+        <option value="-1" selected></option>
+        @for(int i=0; i<Model.Count; i++)
+        {
+            <option value="@i">@Model[i].Name</option>
+        }
+    </select>
+    </div>
     <table class="table" style=" border: 2px #337ab7 solid;">
         <tr class="bg-primary">
             <th>City name</th>
@@ -32,95 +42,95 @@
                 <td>@Model[i].Name</td>
                 <td>
                     @*<div class="input-group" id="Cost" style="width:30%">
-            <span class="input-group-addon">
-                UAH
-            </span>
-            @Html.TextBoxFor(m => m[i].Cost, new { @class = "form_control" })
-            <span class="input-group-addon">
-                .00
-            </span>
-        </div>*@
+                            <span class="input-group-addon">
+                                UAH
+                            </span>
+                            @Html.TextBoxFor(m => m[i].Cost, new { @class = "form_control" })
+                            <span class="input-group-addon">
+                                .00
+                            </span>
+                        </div>*@
                     @Html.HiddenFor(m => m[i].Cost)
-                        <div id="PricingDetails">
-                            <div class="input-group" style="width:30%; margin-bottom:10px;">
-                                <span class="input-group-addon">
-                                    Staying:
-                                </span>
-                                <span class="input-group-addon">
-                                    UAH
-                                </span>
-                                @Html.TextBoxFor(m => m[i].Pricing.Staying, new { @class = "form_control" })
-                                <span class="input-group-addon">
-                                    .00
-                                </span>
-                            </div>
-                            <div class="input-group" style="width:30%; margin-bottom:10px;">
-                                <span class="input-group-addon">
-                                    Food:
-                                </span>
-                                <span class="input-group-addon">
-                                    UAH
-                                </span>
-                                @Html.TextBoxFor(m => m[i].Pricing.Food, new { @class = "form_control" })
-                                <span class="input-group-addon">
-                                    .00
-                                </span>
-                            </div>
-                            <div class="input-group" style="width:30%; margin-bottom:10px;">
-                                <span class="input-group-addon">
-                                    Tours:
-                                </span>
-                                <span class="input-group-addon">
-                                    UAH
-                                </span>
-                                @Html.TextBoxFor(m => m[i].Pricing.Tours, new { @class = "form_control" })
-                                <span class="input-group-addon">
-                                    .00
-                                </span>
-                            </div>
-                            <div class="input-group" style="width:30%; margin-bottom:10px;">
-                                <span class="input-group-addon">
-                                    Museums:
-                                </span>
-                                <span class="input-group-addon">
-                                    UAH
-                                </span>
-                                @Html.TextBoxFor(m => m[i].Pricing.Museums, new { @class = "form_control" })
-                                <span class="input-group-addon">
-                                    .00
-                                </span>
-                            </div>
-                            <div class="input-group" style="width:30%; margin-bottom:10px;">
-                                <span class="input-group-addon">
-                                    Shopping:
-                                </span>
-                                <span class="input-group-addon">
-                                    UAH
-                                </span>
-                                @Html.TextBoxFor(m => m[i].Pricing.Shopping, new { @class = "form_control" })
-                                <span class="input-group-addon">
-                                    .00
-                                </span>
-                            </div>
-                            <div class="input-group" style="width:30%; margin-bottom:10px;">
-                                <span class="input-group-addon">
-                                    Events
-                                </span>
-                                <span class="input-group-addon">
-                                    UAH
-                                </span>
-                                @Html.TextBoxFor(m => m[i].Pricing.Events, new { @class = "form_control" })
-                                <span class="input-group-addon">
-                                    .00
-                                </span>
-                            </div>
+                    <div id="PricingDetails">
+                        <div class="input-group" style="width:30%; margin-bottom:10px;">
+                            <span class="input-group-addon">
+                                Staying:
+                            </span>
+                            <span class="input-group-addon">
+                                UAH
+                            </span>
+                            @Html.TextBoxFor(m => m[i].Pricing.Staying, new { @class = "form_control" })
+                            <span class="input-group-addon">
+                                .00
+                            </span>
                         </div>
+                        <div class="input-group" style="width:30%; margin-bottom:10px;">
+                            <span class="input-group-addon">
+                                Food:
+                            </span>
+                            <span class="input-group-addon">
+                                UAH
+                            </span>
+                            @Html.TextBoxFor(m => m[i].Pricing.Food, new { @class = "form_control" })
+                            <span class="input-group-addon">
+                                .00
+                            </span>
+                        </div>
+                        <div class="input-group" style="width:30%; margin-bottom:10px;">
+                            <span class="input-group-addon">
+                                Tours:
+                            </span>
+                            <span class="input-group-addon">
+                                UAH
+                            </span>
+                            @Html.TextBoxFor(m => m[i].Pricing.Tours, new { @class = "form_control" })
+                            <span class="input-group-addon">
+                                .00
+                            </span>
+                        </div>
+                        <div class="input-group" style="width:30%; margin-bottom:10px;">
+                            <span class="input-group-addon">
+                                Museums:
+                            </span>
+                            <span class="input-group-addon">
+                                UAH
+                            </span>
+                            @Html.TextBoxFor(m => m[i].Pricing.Museums, new { @class = "form_control" })
+                            <span class="input-group-addon">
+                                .00
+                            </span>
+                        </div>
+                        <div class="input-group" style="width:30%; margin-bottom:10px;">
+                            <span class="input-group-addon">
+                                Shopping:
+                            </span>
+                            <span class="input-group-addon">
+                                UAH
+                            </span>
+                            @Html.TextBoxFor(m => m[i].Pricing.Shopping, new { @class = "form_control" })
+                            <span class="input-group-addon">
+                                .00
+                            </span>
+                        </div>
+                        <div class="input-group" style="width:30%; margin-bottom:10px;">
+                            <span class="input-group-addon">
+                                Events
+                            </span>
+                            <span class="input-group-addon">
+                                UAH
+                            </span>
+                            @Html.TextBoxFor(m => m[i].Pricing.Events, new { @class = "form_control" })
+                            <span class="input-group-addon">
+                                .00
+                            </span>
+                        </div>
+                    </div>
                     @Html.HiddenFor(m => m[i].Pricing.ID)
                 </td>
                 <td>
                     <span>Days: </span>@Html.TextBoxFor(m => m[i].Days, new { @style = "margin-bottom: 15px;border-radius: 5px;border: 1px black solid;" })<br>
                     <span>Hours: </span>@Html.TextBoxFor(m => m[i].Hours, new { @style = "margin-bottom: 15px;border-radius: 5px;border: 1px black solid;" })<br>
-                    <span>Minutes: </span>@Html.TextBoxFor(m => m[i].Minutes, new { @style = "margin-bottom: 15px;border-radius: 5px;border: 1px black solid;" })
+                    @Html.HiddenFor(m => m[i].ImageLink)
                 </td>
                 <td>@Html.TextBoxFor(m => m[i].Value, new { @style = "border-radius: 5px;border: 1px black solid;", value = Model[i].Value })</td>
             </tr>
@@ -131,11 +141,11 @@
 @*</form>*@
 
 @*<script>
-    $(document).ready(function () {
-        $("#PricingDetailsBtn").click(function () {
-            $("#PricingDetails").show();
-            $("#Cost").hide();
+        $(document).ready(function () {
+            $("#PricingDetailsBtn").click(function () {
+                $("#PricingDetails").show();
+                $("#Cost").hide();
+            });
         });
-    });
-</script>*@
+    </script>*@
 

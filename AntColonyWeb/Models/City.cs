@@ -12,7 +12,7 @@ namespace AntColonyWeb.Models
         public int? Cost { get; set; }
         public int? Days { get; set; }
         public int? Hours { get; set; }
-        public int? Minutes { get; set; }
+        public string ImageLink { get; set; }
         public int? Value { get; set; }
         public Pricing Pricing { get; set; }
     }

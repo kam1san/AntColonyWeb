@@ -138,7 +138,6 @@
   <ItemGroup>
     <Compile Include="AntColony\AntColonyMain.cs" />
     <Compile Include="AntColony\AntColonyResult.cs" />
-    <Compile Include="AntColony\Solver.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

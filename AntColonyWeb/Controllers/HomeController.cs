@@ -54,12 +54,13 @@ namespace AntColonyWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditCities(List<City> edited_cities)
+        public ActionResult EditCities(string startup_city, List<City> edited_cities)
         {
             foreach (var city in edited_cities)
                 city.Cost = city.Days*(city.Pricing.Events + city.Pricing.Food + city.Pricing.Museums + city.Pricing.Shopping + city.Pricing.Staying + city.Pricing.Tours);
             
             HttpContext.Session["Selected_Cities"] = edited_cities;
+            HttpContext.Session["StartUp_City_Position"] = Convert.ToInt32(startup_city);
 
             return RedirectToAction("GetResult", "Home");
         }
@@ -108,7 +109,7 @@ namespace AntColonyWeb.Controllers
             for(int i=0; i<cities.Count; i++)
             {
                 cities_cost[i] = Convert.ToInt32(cities[i].Cost);
-                cities_time[i] = Convert.ToInt32(cities[i].Days * 60 * 24 + cities[i].Hours * 60 + cities[i].Minutes);
+                cities_time[i] = Convert.ToInt32(cities[i].Days * 60 * 24 + cities[i].Hours * 60);
                 cities_value[i] = Convert.ToInt32(cities[i].Value);
             }
 
@@ -123,7 +124,8 @@ namespace AntColonyWeb.Controllers
                 cities_time,
                 distances,
                 distances_time,
-                cities_value);
+                cities_value,
+                (int)HttpContext.Session["StartUp_City_Position"]);
 
             int min = 0;
             AntColonyResult AntColonyResult = new AntColonyResult();

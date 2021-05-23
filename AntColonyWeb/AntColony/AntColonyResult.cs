@@ -35,7 +35,7 @@ namespace AntColonyWeb.AntColony
         {
             int days = Convert.ToInt32(Math.Truncate(time / 1440));
             int hours = Convert.ToInt32(Convert.ToInt32(time - days * 1440) /60);
-            return $"Approximately {days} days, {hours} hours";
+            return $"Приблизно {days} днів, {hours} годин.";
         }
     }
 }
