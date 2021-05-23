@@ -23,7 +23,7 @@ namespace AntColonyWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetChosenCities(int[] selected, int fuel_cons, string fuel_t, int TotalMoney, int TotalTimeDays, int TotalTimeHours, int TotalTimeMinutes)
+        public ActionResult GetChosenCities(int[] selected, int fuel_cons, string fuel_t, int TotalMoney, int TotalTimeDays, int TotalTimeHours)
         {
             List<City> selected_cities_list = new List<City>();
 
@@ -43,7 +43,9 @@ namespace AntColonyWeb.Controllers
             HttpContext.Session["Fuel_Price"] = HtmlParser.GetFuelPrice((string)HttpContext.Session["Fuel_Type"]);
 
             HttpContext.Session["Total_Money"] = TotalMoney;
-            HttpContext.Session["Total_Time"] = TotalTimeDays*60*24 + TotalTimeHours*60 + TotalTimeMinutes;
+            HttpContext.Session["Total_Time"] = TotalTimeDays*60*24 + TotalTimeHours*60;
+            HttpContext.Session["Total_Time_Days"] = TotalTimeDays;
+            HttpContext.Session["Total_Time_Hours"] = TotalTimeHours;
 
             return RedirectToAction("EditCities", "Home");
         }
@@ -143,20 +145,32 @@ namespace AntColonyWeb.Controllers
             var DT = (string[][])HttpContext.Session["Time_Non_Convert"];
             var DC = (int[][])HttpContext.Session["Distances"];
 
-            for (int i = 0; i < AntColonyResult.Path.Count; i++)
-                for (int j = 0; j < cities.Count; j++)
-                    if (AntColonyResult.Path[i] == j)
-                    {
-                        if (i < AntColonyResult.Path.Count - 1)
-                        {
-                            AntColonyResult.distances_cost[i] = DC[j][AntColonyResult.Path[i + 1]];
-                            AntColonyResult.distances_time[i] = DT[j][AntColonyResult.Path[i + 1]];
-                        }
-                        AntColonyResult.Path_Cities.Add(cities[j]);
-                    }
+            if (AntColonyResult.Path == null)
+            {
+                ViewBag.AntColonyResult = null;
+                ViewBag.TotalMoney = (int)HttpContext.Session["Total_Money"];
+                ViewBag.TotalDays= (int)HttpContext.Session["Total_Time_Days"];
+                ViewBag.TotalHours = (int)HttpContext.Session["Total_Time_Hours"];
+                return View();
+            }
+            else
+            {
 
-            ViewBag.AntColonyResult = AntColonyResult;
-            return View();
+                for (int i = 0; i < AntColonyResult.Path.Count; i++)
+                    for (int j = 0; j < cities.Count; j++)
+                        if (AntColonyResult.Path[i] == j)
+                        {
+                            if (i < AntColonyResult.Path.Count - 1)
+                            {
+                                AntColonyResult.distances_cost[i] = DC[j][AntColonyResult.Path[i + 1]];
+                                AntColonyResult.distances_time[i] = DT[j][AntColonyResult.Path[i + 1]];
+                            }
+                            AntColonyResult.Path_Cities.Add(cities[j]);
+                        }
+
+                ViewBag.AntColonyResult = AntColonyResult;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)
