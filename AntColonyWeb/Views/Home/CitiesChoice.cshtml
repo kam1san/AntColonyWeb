@@ -4,16 +4,6 @@
 }
 
 <div class="div_block">
-    @*@using (Html.BeginForm("GetChosenCities", "Home", FormMethod.Post))
-            {
-        <div>
-            @Html.DropDownList("selected", ViewBag.Cities as SelectList, new { @class = "selectpicker" })
-        </div>
-                <input class="btn-1" style="width:auto; margin-top: 20px;" type="submit" />
-            }*@
-
-
-
     <form action="/Home/GetChosenCities" method="post">
 
         <div>
@@ -75,7 +65,5 @@
     $(document).ready(function () {
         var div_select = document.getElementsByClassName('bootstrap-select')[0];
         div_select.setAttribute("style", "width: 100%;");
-      //var select = document.getElementsByTagName('select')[0];
-      //select.setAttribute("multiple", "");  
     });
 </script>
